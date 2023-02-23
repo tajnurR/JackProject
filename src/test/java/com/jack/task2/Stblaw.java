@@ -37,16 +37,19 @@ public class Stblaw {
 	WebDriver driver;
 	ChromeOptions opt;
 	
-	String filename = "D:\\Work\\JackProject\\files\\excel\\input.xlsx";
+//	String filename = "D:\\Work\\JackProject\\files\\excel\\input.xlsx";
+//	String sheetName = "Sheet1";
+	String filename = "E:\\Work Temp\\jack 2\\Stblaw\\input.xlsx";
 	String sheetName = "Sheet1";
 	
 	String fileOut = "D:\\Work\\JackProject\\files\\excel\\output.xlsx";
 	String sheetOut = "Sheet1";
 	
 	
-//	https://www.sidley.com/
+//	https://www.Stblaw.com/
 //	cd C:\Program Files\Google\Chrome\Application
 //	chrome.exe --remote-debugging-port=8050 --user-data-dir=D:\Work\Chrome
+//	chrome.exe --remote-debugging-port=8050 --user-data-dir=E:\Work Temp\Jack Script\file\chrome
 	
 	@Test
 	public void testx() {
@@ -327,7 +330,7 @@ public class Stblaw {
 	@Test
 	public void saveList() throws Exception {
 		
-		mapper.writeValue(new File("C:\\Users\\Asus\\Desktop\\New folder\\x.json"), lists);
+		mapper.writeValue(new File("E:\\Work Temp\\jack 2\\Stblaw\\StblawOutput.json"), lists);
 		
 		
 	}
@@ -337,7 +340,8 @@ public class Stblaw {
 		
 		System.out.println("I setup ");
 		
-		System.setProperty("webdriver.chrome.driver", "D:\\Work\\JackProject\\files\\devtools\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver", "D:\\Work\\JackProject\\files\\devtools\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "E:\\Work Temp\\Jack Script\\file\\devtools\\chromedriver.exe");
 		opt = new ChromeOptions();
 		opt.setExperimentalOption("debuggerAddress", "localhost:8050");
 		opt.setHeadless(true);
