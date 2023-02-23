@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="9" passed="8" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-02-23T19:13:37 BDT" name="Default suite" finished-at="2023-02-23T19:14:35 BDT" duration-ms="58651">
+    <groups>
+    </groups>
+    <test started-at="2023-02-23T19:13:37 BDT" name="Default test" finished-at="2023-02-23T19:14:35 BDT" duration-ms="58651">
+      <class name="com.jack.task2.Stblaw">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.jack.task2.Stblaw@f09733f]" started-at="2023-02-23T19:13:37 BDT" name="setup" finished-at="2023-02-23T19:13:38 BDT" duration-ms="1727" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="run(java.lang.String)[pri:0, instance:com.jack.task2.Stblaw@f09733f]" started-at="2023-02-23T19:13:39 BDT" name="run" data-provider="userdata" finished-at="2023-02-23T19:13:51 BDT" duration-ms="11865" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://www.stblaw.com/our-team/partners/steven-homan]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- run -->
+        <test-method signature="run(java.lang.String)[pri:0, instance:com.jack.task2.Stblaw@f09733f]" started-at="2023-02-23T19:13:51 BDT" name="run" data-provider="userdata" finished-at="2023-02-23T19:13:58 BDT" duration-ms="7653" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://www.stblaw.com/our-team/partners/james-r--howe]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- run -->
+        <test-method signature="run(java.lang.String)[pri:0, instance:com.jack.task2.Stblaw@f09733f]" started-at="2023-02-23T19:13:58 BDT" name="run" data-provider="userdata" finished-at="2023-02-23T19:14:03 BDT" duration-ms="5055" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://www.stblaw.com/our-team/partners/eli-g--hunt]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- run -->
+        <test-method signature="run(java.lang.String)[pri:0, instance:com.jack.task2.Stblaw@f09733f]" started-at="2023-02-23T19:14:03 BDT" name="run" data-provider="userdata" finished-at="2023-02-23T19:14:09 BDT" duration-ms="5699" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://www.stblaw.com/our-team/partners/jonathan--hwang]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- run -->
+        <test-method signature="run(java.lang.String)[pri:0, instance:com.jack.task2.Stblaw@f09733f]" started-at="2023-02-23T19:14:09 BDT" name="run" data-provider="userdata" finished-at="2023-02-23T19:14:19 BDT" duration-ms="9836" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://www.stblaw.com/our-team/partners/eli-isak]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- run -->
+        <test-method signature="run(java.lang.String)[pri:0, instance:com.jack.task2.Stblaw@f09733f]" started-at="2023-02-23T19:14:19 BDT" name="run" data-provider="userdata" finished-at="2023-02-23T19:14:26 BDT" duration-ms="7129" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://www.stblaw.com/our-team/partners/lynn-k-neuner]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- run -->
+        <test-method signature="run(java.lang.String)[pri:0, instance:com.jack.task2.Stblaw@f09733f]" started-at="2023-02-23T19:14:26 BDT" name="run" data-provider="userdata" finished-at="2023-02-23T19:14:32 BDT" duration-ms="6428" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://www.stblaw.com/our-team/partners/chris--bennett]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- run -->
+        <test-method signature="saveList()[pri:0, instance:com.jack.task2.Stblaw@f09733f]" started-at="2023-02-23T19:14:32 BDT" name="saveList" finished-at="2023-02-23T19:14:35 BDT" duration-ms="2734" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "java.lang.StringBuilder.toString()" because "celldata" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "java.lang.StringBuilder.toString()" because "celldata" is null
+at com.jack.utility.ExcelUtlity.setCellDataBig(ExcelUtlity.java:122)
+at com.jack.task2.Stblaw.saveList(Stblaw.java:343)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:962)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:806)
+at org.testng.TestRunner.run(TestRunner.java:601)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:433)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:427)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:387)
+at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+at org.testng.TestNG.runSuites(TestNG.java:1099)
+at org.testng.TestNG.run(TestNG.java:1067)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- saveList -->
+        <test-method signature="testx()[pri:0, instance:com.jack.task2.Stblaw@f09733f]" started-at="2023-02-23T19:14:35 BDT" name="testx" finished-at="2023-02-23T19:14:35 BDT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testx -->
+      </class> <!-- com.jack.task2.Stblaw -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
