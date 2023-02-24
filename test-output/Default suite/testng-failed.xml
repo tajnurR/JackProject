@@ -5,8 +5,8 @@
     <classes>
       <class name="com.jack.task2.Gibsondunn">
         <methods>
-          <include name="saveList"/>
           <include name="setup"/>
+          <include name="saveList"/>
           <include name="testx"/>
           <include name="run"/>
         </methods>

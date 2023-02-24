@@ -39,7 +39,7 @@ public class Gibsondunn {
 	
 //	String filename = "D:\\Work\\JackProject\\files\\excel\\input.xlsx";
 //	String sheetName = "Sheet1";
-	String filename = "D:\\Fiverr Work\\Jack Project\\gibsondunn\\input.xlsx";
+	String filename = "E:\\Work Temp\\jack 2\\gibsondunn\\input.xlsx";
 	String sheetName = "Sheet1";
 	
 	String fileOut = "D:\\Work\\JackProject\\files\\excel\\output.xlsx";
@@ -308,7 +308,7 @@ public class Gibsondunn {
 	@Test
 	public void saveList() throws Exception {
 		
-		mapper.writeValue(new File("D:\\Fiverr Work\\Jack Project\\gibsondunn\\ggg.json"), lists);
+		mapper.writeValue(new File("E:\\Work Temp\\jack 2\\gibsondunn\\row.json"), lists);
 		
 		
 	}
@@ -318,8 +318,8 @@ public class Gibsondunn {
 		
 		System.out.println("I setup ");
 		
-		System.setProperty("webdriver.chrome.driver", "D:\\Work\\files\\devtools\\chromedriver.exe");
-//		System.setProperty("webdriver.chrome.driver", "E:\\Work Temp\\Jack Script\\file\\devtools\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver", "D:\\Work\\files\\devtools\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "E:\\Work Temp\\Jack Script\\file\\devtools\\chromedriver.exe");
 		opt = new ChromeOptions();
 		opt.setExperimentalOption("debuggerAddress", "localhost:8050");
 		opt.setHeadless(true);
