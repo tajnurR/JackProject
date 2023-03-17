@@ -1,5 +1,6 @@
  package com.jack.task2;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,12 +26,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.jack.utility.ExcelUtlity;
+import com.jack.utility.LinkList;
 
 public class DropwornLink {
 	
-
+	ObjectMapper mapper = new ObjectMapper();
 	ExcelUtlity utitle = new ExcelUtlity();
 	
 	WebDriver driver;
@@ -39,46 +42,41 @@ public class DropwornLink {
 	String filename = ".//files//excel//input.xlsx";
 	String sheetName = "Sheet1";
 	
-	String fileOut = "D:\\Fiverr Work\\Jack Project\\Sidley\\input.xlsx";
+	String fileOut = "D:\\Fiverr Work\\Jack Project\\mofo\\input.xlsx";
 	String sheetOut = "Sheet1";
 	
 //	cd C:\Program Files\Google\Chrome\Application
 //	chrome.exe --remote-debugging-port=8050 --user-data-dir=D:\Work\JackProject\files\Chrome
 	
+	List<LinkList> lists = new ArrayList<LinkList>();
+	
 	@Test
 	public void testx() throws IOException, InterruptedException {
-		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		Actions actions = new Actions(driver);
 		
 		int fix = 0;
 		int count = 0;
 		
-//		ArrayList list = new ArrayList();
-		
-		int locationSize = driver.findElements(By.xpath("//ul[@data-bind='foreach : OfficeFilters']/li")).size();
-//		for (int i = 0; i < locationSize; i++) {
-//			String locaionName = driver.findElement(By.xpath("//select[@name='Location']/option")).getAttribute("label");
-//			list.add(locaionName);
-//		}
-		
-		for (int j = 1; j < locationSize+1; j++) {
-//			Select lo = new Select(driver.findElement(By.xpath("//ul[@data-bind='foreach : OfficeFilters']")));
-//			lo.selectByIndex(j+1);
+		int locationSize = driver.findElements(By.xpath("//select[@aria-label='location filter']/option")).size();
+
+		for (int j = 0; j < locationSize; j++) {
+			System.out.println(locationSize);
 			try {
-				driver.findElement(By.xpath("//div[@data-name='office']//div[@role='button']")).click();
-				Thread.sleep(1000);
+				Select lo = new Select(driver.findElement(By.xpath("//select[@aria-label='location filter']")));
+
+				lo.selectByIndex(j+1);
+
+				Thread.sleep(5000);
+//				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='lawyer-name'])[1]")));
+				count = driver.findElements(By.xpath("(//div[@class='lawyer-name'])")).size();
+
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-
-			driver.findElement(By.xpath("//ul[@data-bind='foreach : OfficeFilters']/li["+j+"]")).click();
-			Thread.sleep(1000);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,'contact-name')])[1]")));
-			count = driver.findElements(By.xpath("//div[contains(@class,'contact-name')]")).size();
 			
-		
-		
+			
+			System.out.println("fix="+fix+"  "+"count="+count);
 		while (fix != count) {
 			
 			fix = count;
@@ -86,34 +84,34 @@ public class DropwornLink {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 	        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 	        try {
-				driver.findElement(By.xpath("//button[normalize-space()='Load More']")).click();
+	        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='lawyer-name'])["+(count+1)+"]")));
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-	        Thread.sleep(3000);
-	        count = driver.findElements(By.xpath("//div[contains(@class,'contact-name')]")).size();
+	        
+	       
+	        count = driver.findElements(By.xpath("(//div[@class='lawyer-name'])")).size();
 	        
 //			System.out.println(count);
 		}
 		
 		for (int x = 1; x < count+1; x++) {
-			int row = utitle.getRowCount(fileOut, sheetOut);
-			row++;
+			LinkList st = new LinkList();
+			String link = "";
 			try {
-				String link = driver.findElement(By.xpath("(//div[contains(@class,'contact-name')])["+x+"]/a")).getAttribute("href");
-				utitle.setCellData(fileOut, sheetOut, row, 0, link);
-//				
-//				String img = driver.findElement(By.xpath("(//div[@class='search__resultstitle']/following-sibling::ul/li/a/div/img)["+x+"]")).getAttribute("src");
-//				utitle.setCellData(fileOut, sheetOut, row, 1, img);
-				
-				System.out.println(link);
-			
+				link = driver.findElement(By.xpath("(//div[@class='lawyer-name']/a)["+x+"]")).getAttribute("href");
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 			
+			st.setLink(link);
+			System.out.println(link);
+			lists.add(st);
 		}
+		
 		}
+		
+		mapper.writeValue(new File("D:\\Fiverr Work\\Jack Project\\whitecase\\list.json"), lists);
 	}
 
 	
@@ -122,7 +120,7 @@ public class DropwornLink {
 		
 		System.out.println("I setup ");
 		
-		System.setProperty("webdriver.chrome.driver", "D:\\Work\\JackProject\\files\\devtools\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "D:\\Work\\devtools\\chromedriver.exe");
 		opt = new ChromeOptions();
 		opt.setExperimentalOption("debuggerAddress", "localhost:8050");
 		

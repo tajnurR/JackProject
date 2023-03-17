@@ -47,7 +47,7 @@ public class Others {
 	public void testx() throws IOException, InterruptedException {
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-		Actions actions = new Actions(driver);
+//		Actions actions = new Actions(driver);
 		String hasNext = "";
 		try {
 			hasNext = driver.findElement(By.xpath("//a[@title='Next']")).getText();
