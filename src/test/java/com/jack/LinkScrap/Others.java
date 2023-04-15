@@ -45,7 +45,7 @@ public class Others {
 	public void testx() throws IOException, InterruptedException {
 		
 		
-		
+//		int totalsize = driver.findElement(By.xpath(""))
 		
 //		
 //		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -97,7 +97,7 @@ public class Others {
 		WebDriverManager.edgedriver().setup();
 
 		
-		driver.get("https://www.lw.com/en/people#sort=%40peoplerankbytitle%20ascending%3B%40peoplelastname%20ascending");
+		driver.get("https://www.polsinelli.com/people?search[post_type]=person");
 //		driver.manage().window().maximize();
 		
 	}

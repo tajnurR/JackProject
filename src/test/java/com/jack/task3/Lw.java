@@ -1,5 +1,6 @@
 package com.jack.task3;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,6 +17,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,6 +29,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jack.utility.ExcelUtlity;
 import com.jack.utility.Scraping;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class Lw {
 	
 	ObjectMapper mapper = new ObjectMapper();
@@ -36,8 +40,8 @@ public class Lw {
 	WebDriver driver;
 	ChromeOptions opt;
 	
-	String filename = ".//files//excel//input.xlsx";
-	String sheetName = "Sheet1";
+	String filename = "D:\\Fiverr Work\\Jack Project 2\\Latham & Watkins\\All Links.xlsx";
+	String sheetName = "Sheet2";
 	
 	String fileOut = ".//files//excel//output.xlsx";
 	String sheetOut = "Sheet1";
@@ -67,7 +71,7 @@ public class Lw {
 
 		sm.setLink(link);
 		
-//	Titile
+//	Name
 	try {
 		String name = driver.findElement(By.xpath("//h1[@class='hero-people-detail__name']")).getText();
 		sm.setName(name);
@@ -83,8 +87,25 @@ public class Lw {
 			
 		}
 		
+////	Email
+	try {
+		String email = driver.findElement(By.xpath("//div[@class='contact-tabs__panels']/div[1]/a")).getText();
+		sm.setEmail(email);
+	} catch (Exception e) {
 		
-////		Contact
+	}
+	
+	
+	//Phone
+	try {
+		String phone = driver.findElement(By.xpath("//div[@class='contact-tabs__panels']/div[1]/ul/li[1]")).getText();
+		sm.setPhone(phone);
+	} catch (Exception e) {
+		
+	}
+		
+		
+////		Location
 		try {
 		String main = "";
 		int locationSize = driver.findElements(By.xpath("(//ul[contains(@class,'office--tabs')]/li)")).size();
@@ -106,15 +127,15 @@ public class Lw {
 //		Language
 		try {
 			String main = "";
-			int numberOfLan = driver.findElements(By.xpath("//nav[@aria-label='Language options']/ul/li")).size();
+			int numberOfLan = driver.findElements(By.xpath("//h3[normalize-space()='Languages Spoken']/following-sibling::ul/li")).size();
 			for (int i = 1; i < numberOfLan+1; i++) {
-				String lang = driver.findElement(By.xpath("//nav[@aria-label='Language options']/ul/li["+i+"]/a")).getAttribute("title");
+				String lang = driver.findElement(By.xpath("(//h3[normalize-space()='Languages Spoken']/following-sibling::ul/li)["+i+"]")).getText();
 				main+=" ;"+lang;
 			}
 			
-			utitle.setCellData(fileOut, sheetOut, row, 1, main);
+			sm.setLanguage(main);
 		} catch (Exception e) {
-			utitle.setCellData(fileOut, sheetOut, row, 1, missing);
+			
 		}
 
 //		Bio
@@ -129,9 +150,9 @@ public class Lw {
 			}
 			
 			
-			utitle.setCellDataBig(fileOut, sheetOut, row, 2, bio);
+			sm.setBio(bio);
 		} catch (Exception e) {
-			utitle.setCellData(fileOut, sheetOut, row, 2, missing);
+			
 		}
 		
 ////		Experience
@@ -152,14 +173,14 @@ public class Lw {
 			for (int i = 1; i < numberOfLan+1; i++) {
 				String bar = driver.findElement(By.xpath("//h3[normalize-space()='Bar Qualification']/parent::div/ul/li["+i+"]")).getText();
 				if (i <= 1) {
-					utitle.setCellData(fileOut, sheetOut, row, 3, bar);
+					sm.setBar1(bar);
 				}
 				main+=";"+bar;
 			}
 			
-			utitle.setCellData(fileOut, sheetOut, row, 4, main);
+			sm.setBarAll(main);
 		} catch (Exception e) {
-			utitle.setCellData(fileOut, sheetOut, row, 3, missing);
+			
 		}
 		
 ////		Image
@@ -170,6 +191,8 @@ public class Lw {
 //			utitle.setCellData(fileOut, sheetOut, row, 7, missing);
 //		}
 //		https://www.lw.com/en/people/christopher-drewry
+		
+		
 //		PRACTICES
 		try {
 			String main = "";
@@ -177,14 +200,18 @@ public class Lw {
 			for (int i = 1; i < numberOfLan+1; i++) {
 				String par = driver.findElement(By.xpath("//h3[normalize-space()='Practices']/parent::div/ul/li["+i+"]/a")).getText();
 				if (i <= 2) {
-					utitle.setCellData(fileOut, sheetOut, row, 4+i, par);
+					if (i==1) {
+						sm.setPratic1(par);
+					}else if (i==2) {
+						sm.setPratic2(par);
+					}
 				}
 				main+=";"+par;
 			}
 			
-			utitle.setCellData(fileOut, sheetOut, row, 7, main);
+			sm.setPraticAll(main);
 		} catch (Exception e) {
-			utitle.setCellData(fileOut, sheetOut, row, 5, missing);
+			
 		}
 		
 		
@@ -195,36 +222,64 @@ public class Lw {
 			for (int i = 1; i < numberOfLan+1; i++) {
 				String edu = driver.findElement(By.xpath("//h3[normalize-space()='Education']/parent::div/ul/li["+i+"]")).getText();
 				if (i<=5) {
-					utitle.setCellData(fileOut, sheetOut, row, 7+i, edu);
+					if (i==1) {
+						sm.setEdu1(edu);
+					}else if (i==2) {
+						sm.setEdu2(edu);
+					}else if (i==3) {
+						sm.setEdu3(edu);
+					}else if (i==4) {
+						sm.setEdu4(edu);
+					}else if (i==5) {
+						sm.setEdu5(edu);
+					}
 				}else {
 					main+=";"+edu;
 				}
 				
 			}
-			utitle.setCellData(fileOut, sheetOut, row, 13, main);
+			sm.setEduAll(main);
 		} catch (Exception e) {
 			
 		}
 		
+		//	Image 
+	try {
+		String img = driver.findElement(By.xpath("//div[@class='hero-people-detail__image']/div/img")).getAttribute("src");
+		sm.setImg(img);
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
 		
-
+		
+	lists.add(sm);
 		
 		driver.close();
 		driver.switchTo().window(ls.get(0));
+	}
+	
+	@Test
+	public void saveList() throws Exception {
+		
+		mapper.writeValue(new File("D:\\Fiverr Work\\Jack Project 2\\Latham & Watkins\\row.json"), lists);
+		System.out.println("Data Saved");
 	}
 	
 	@BeforeClass
 	public void setup() {
 		
 		System.out.println("I setup ");
+//		
+//		System.setProperty("webdriver.chrome.driver", "C:\\Users\\tajnu\\eclipse-workspace\\JackProject\\files\\devtools\\chromedriver.exe");
+//		opt = new ChromeOptions();
+//		opt.setExperimentalOption("debuggerAddress", "localhost:8050");
+//		
+//		driver = new ChromeDriver(opt);
+////		driver.get(appUrl);
+//		driver.manage().window().maximize();
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\tajnu\\eclipse-workspace\\JackProject\\files\\devtools\\chromedriver.exe");
-		opt = new ChromeOptions();
-		opt.setExperimentalOption("debuggerAddress", "localhost:8050");
-		
-		driver = new ChromeDriver(opt);
-//		driver.get(appUrl);
-		driver.manage().window().maximize();
+		driver = new EdgeDriver();
+		WebDriverManager.edgedriver().setup();
 		
 	}
 	

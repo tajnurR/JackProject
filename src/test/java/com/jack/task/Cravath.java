@@ -31,7 +31,7 @@ public class Cravath {
 //	WebDriver driver;
 //	ChromeOptions opt;
 	
-	String filename = "D:\\Fiverr Work\\Jack Project\\debevoise 2\\img.xlsx";
+	String filename = "D:\\Fiverr Work\\Jack Project 2\\Latham & Watkins\\img.xlsx";
 	String sheetName = "Sheet1";
 	
 	String fileOut = "//files//excel//output.xlsx";
@@ -49,34 +49,34 @@ public class Cravath {
 	public void run(String id, String imgLink) throws IOException {
 
 //		Image Dwonload save
-//		URL imgUrl = new URL(imgLink);
-//		InputStream is = imgUrl.openStream();
-//		OutputStream fos = new FileOutputStream("D:\\Fiverr Work\\Jack Project\\goodwinlaw\\img\\"+id+".jpg");
-//		 int ch;
-//         while ((ch = is.read()) != -1) { 
-//                fos.write(ch);
-//               
-//         }
-//         System.out.println(id+" Save Done");
-//		is.close();
-//        fos.close();
+		URL imgUrl = new URL(imgLink);
+		InputStream is = imgUrl.openStream();
+		OutputStream fos = new FileOutputStream("D:\\Fiverr Work\\Jack Project 2\\Latham & Watkins\\imgs\\"+id+".jpg");
+		 int ch;
+         while ((ch = is.read()) != -1) { 
+                fos.write(ch);
+               
+         }
+         System.out.println(id+" Save Done");
+		is.close();
+        fos.close();
 		
 //		Rename 
-		String rootPath = "D:\\Fiverr Work\\Jack Project\\debevoise 2\\img\\"+imgLink;
-		File f = new File(rootPath);
-		String getEx = FilenameUtils.getExtension(rootPath);
-		String storepaath = "D:\\Fiverr Work\\Jack Project\\debevoise 2\\rimg\\"+id+"."+getEx;
-		File r = new File(storepaath);
-		
-		if (f.exists()) {
-//			System.out.println(rootPath);
-			f.renameTo(r);
-			System.out.println(storepaath+"    Saved");
-		}else {
-			System.out.println("false");
-		}
-		
-		
+//		String rootPath = "D:\\Fiverr Work\\Jack Project\\debevoise 2\\img\\"+imgLink;
+//		File f = new File(rootPath);
+//		String getEx = FilenameUtils.getExtension(rootPath);
+//		String storepaath = "D:\\Fiverr Work\\Jack Project\\debevoise 2\\rimg\\"+id+"."+getEx;
+//		File r = new File(storepaath);
+//		
+//		if (f.exists()) {
+////			System.out.println(rootPath);
+//			f.renameTo(r);
+//			System.out.println(storepaath+"    Saved");
+//		}else {
+//			System.out.println("false");
+//		}
+//		
+//		
 	}
 	
 //	@BeforeClass

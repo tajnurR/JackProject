@@ -41,7 +41,7 @@ public class Blankrome {
 	String sheetOut = "Sheet1";
 	
 //	cd C:\Program Files\Google\Chrome\Application
-//	chrome.exe --remote-debugging-port=8050 --user-data-dir=C:\Users\tajnu\eclipse-workspace\JackProject\files\chrome
+//	chrome.exe --remote-debugging-port=8050 --user-data-dir=D:\Work\Chrome
 	
 	@Test
 	public void testx() {
